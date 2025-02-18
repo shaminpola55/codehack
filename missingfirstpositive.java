@@ -1,6 +1,7 @@
 package com.infy.aiapi;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class FirstMissingPositive {
@@ -8,13 +9,16 @@ public class FirstMissingPositive {
 	{
 		int input[]= {4,2,3,6,7,5,-1,-5,4,9,-2,8};
 		List<Integer> numb= new ArrayList<Integer>();
+		HashMap<Integer,Integer> hmap= new HashMap<>();
 		
 		for(int i=0;i<input.length;i++)
 		{
 			if(input[i]>0)
 			{
-				if(!numb.contains(input[i]))
+				if(hmap.get(input[i]) ==null) {
+					hmap.put(input[i], 1);
 				numb.add(input[i]);
+				}
 			}
 		}
 		numb.sort((a,b)->{return a-b;});
